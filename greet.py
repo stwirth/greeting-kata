@@ -1,4 +1,9 @@
 
+def format_name(name):
+    if '"' in name:
+        return [name.replace('"', '')]
+    else:
+        return [name_part.strip() for name_part in name.split(',')]
 
 def format_names(names):
     if len(names) == 2:
@@ -16,6 +21,8 @@ def format_greeting(prefix, names, postfix):
         return prefix + format_names(names) + postfix
     return ''
 
+def flatten_list(list_of_lists):
+    return [item for list in list_of_lists for item in list]
 
 def greet(names):
     if names is None:
@@ -24,13 +31,8 @@ def greet(names):
     if type(names) != list:
         names = [names]
 
-    splitted_names = []
-    for name in names:
-        if '"' in name:
-            splitted_names.append(name.replace('"', ''))
-        else:
-            splitted_names.extend([name_part.strip() for name_part in name.split(',')])
-    names = splitted_names
+    name_lists = [format_name(name) for name in names]
+    names = flatten_list(name_lists)
 
     normal_list = [name for name in names if not name.isupper()]
     shout_list = [name for name in names if name.isupper()]
