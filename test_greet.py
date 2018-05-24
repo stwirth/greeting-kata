@@ -15,3 +15,7 @@ class GreetTest(unittest.TestCase):
 
     def test_greet_two_names(self):
         self.assertEqual(greet(['Jill', 'Jane']), 'Hello, Jill and Jane.')
+
+    def test_greet_multiple(self):
+        self.assertEqual(greet(['Amy', 'Brian', 'Charlotte']),
+                         'Hello, Amy, Brian, and Charlotte.')
