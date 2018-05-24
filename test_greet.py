@@ -19,3 +19,7 @@ class GreetTest(unittest.TestCase):
     def test_greet_multiple(self):
         self.assertEqual(greet(['Amy', 'Brian', 'Charlotte']),
                          'Hello, Amy, Brian, and Charlotte.')
+
+    def test_mix_shouting(self):
+        self.assertEqual(greet(['Amy', 'BRIAN', 'Charlotte']),
+                         'Hello, Amy and Charlotte. AND HELLO BRIAN!')
