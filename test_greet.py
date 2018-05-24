@@ -27,3 +27,7 @@ class GreetTest(unittest.TestCase):
     def test_split_comma(self):
         self.assertEqual(greet(['Bob', 'Charlie, Dianne']),
                          'Hello, Bob, Charlie, and Dianne.')
+
+    def test_intentional_comma(self):
+        self.assertEqual(greet(['Bob', '"Charlie, Dianne"']),
+                         'Hello, Bob and Charlie, Dianne.')
