@@ -12,3 +12,6 @@ class GreetTest(unittest.TestCase):
 
     def test_shout(self):
         self.assertEqual(greet('JERRY'), 'HELLO JERRY!')
+
+    def test_greet_two_names(self):
+        self.assertEqual(greet(['Jill', 'Jane']), 'Hello, Jill and Jane.')
