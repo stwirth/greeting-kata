@@ -9,3 +9,6 @@ class GreetTest(unittest.TestCase):
 
     def test_null_name(self):
         self.assertEqual(greet(None), 'Hello, my friend.')
+
+    def test_shout(self):
+        self.assertEqual(greet('JERRY'), 'HELLO JERRY!')
