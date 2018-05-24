@@ -1,5 +1,22 @@
 
 
+def format_names(names):
+    if len(names) == 2:
+        return ' and '.join(names)
+    elif len(names) > 2:
+        comma_separated = ', '.join(names[:-1])
+        return '{}, and {}'.format(comma_separated, names[-1])
+    elif len(names) == 1:
+        return '{}'.format(names[0])
+    return ''
+
+
+def format_greeting(prefix, names, postfix):
+    if len(names) > 0:
+        return prefix + format_names(names) + postfix
+    return ''
+
+
 def greet(names):
     if names is None:
         names = ['my friend']
@@ -10,19 +27,8 @@ def greet(names):
     normal_list = [name for name in names if not name.isupper()]
     shout_list = [name for name in names if name.isupper()]
 
-    normal_greeting = ''
-    shout_greeting = ''
-
-    if len(normal_list) == 2:
-        normal_greeting = 'Hello, ' + ' and '.join(normal_list) + '.'
-    elif len(normal_list) > 2:
-        comma_separated = ', '.join(normal_list[:-1])
-        normal_greeting  = 'Hello, {}, and {}.'.format(comma_separated, normal_list[-1])
-    elif len(normal_list) == 1:
-        normal_greeting = 'Hello, {}.'.format(normal_list[0])
-
-    if len(shout_list) > 0:
-        shout_greeting = 'HELLO {}!'.format(' '.join(shout_list))
+    normal_greeting = format_greeting('Hello, ', normal_list, '.')
+    shout_greeting = format_greeting('HELLO ', shout_list, '!')
 
     if len(normal_greeting) > 0 and len(shout_greeting):
         shout_greeting = ' AND ' + shout_greeting
