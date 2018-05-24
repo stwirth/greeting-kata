@@ -26,7 +26,10 @@ def greet(names):
 
     splitted_names = []
     for name in names:
-        splitted_names.extend([name_part.strip() for name_part in name.split(',')])
+        if '"' in name:
+            splitted_names.append(name.replace('"', ''))
+        else:
+            splitted_names.extend([name_part.strip() for name_part in name.split(',')])
     names = splitted_names
 
     normal_list = [name for name in names if not name.isupper()]
