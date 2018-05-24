@@ -23,3 +23,7 @@ class GreetTest(unittest.TestCase):
     def test_mix_shouting(self):
         self.assertEqual(greet(['Amy', 'BRIAN', 'Charlotte']),
                          'Hello, Amy and Charlotte. AND HELLO BRIAN!')
+
+    def test_split_comma(self):
+        self.assertEqual(greet(['Bob', 'Charlie, Dianne']),
+                         'Hello, Bob, Charlie, and Dianne.')
